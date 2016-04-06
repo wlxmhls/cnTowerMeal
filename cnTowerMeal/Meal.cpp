@@ -471,7 +471,9 @@ void ShowMealData(HWND hDlg)
 	MultiByteToWideChar(CP_OEMCP, NULL, strTmp, 30, szTmp, 30);
 	SetDlgItemText(hDlg, IDC_EDIT4, szTmp);	// 各餐价格
 
-	sprintf_s(strTmp, "今天是%d年%d月%d日", m_iYear, m_iMonth, m_iDay);
+	SYSTEMTIME	systime;
+	::GetSystemTime(&systime);
+	sprintf_s(strTmp, "今天是%d年%d月%d日", systime.wYear, systime.wMonth, systime.wDay);
 	MultiByteToWideChar(CP_OEMCP, NULL, strTmp, 30, szTmp, 30);
 	SetDlgItemText(hDlg, IDC_EDIT5, szTmp);
 }

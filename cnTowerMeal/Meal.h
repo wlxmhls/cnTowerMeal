@@ -105,8 +105,18 @@ BOOL LoadMealMap()
 		if (fgets(tmpBuffer,10,fp) == NULL)
 			return FALSE;
 		fMealMap[i-1] = (float)atof(tmpBuffer);
-		if (fMealMap[m_iDay - 1] == M001 || fMealMap[m_iDay - 1] == M101 || fMealMap[m_iDay - 1] == M011 || fMealMap[m_iDay - 1] == M111)
+
+		//wchar_t	szTmp[200] = { 0 };
+		//char	strTmp[200] = { 0 };
+		//sprintf_s(strTmp, "fMealMap[i-1]: %.10f Ԫ, M111: %.10f Ԫ, fabs(fMealMap[i-1]-M111): %.10f", fMealMap[i - 1], M111, fabs(fMealMap[i-1]-M111));
+		//MultiByteToWideChar(CP_OEMCP, NULL, strTmp, 200, szTmp, 200);
+		//MessageBox(NULL, szTmp, NULL, MB_OK);
+
+		if (fMealMap[i - 1] == M001 || fMealMap[i - 1] == M101 || fMealMap[i - 1] == M011 || fMealMap[i - 1] == M111)
+		//if (fabs(fMealMap[i-1]-M001)<0.000001 || fabs(fMealMap[i-1]-M101)<0.000001 || fabs(fMealMap[i-1]-M011)<0.000001 || fabs(fMealMap[i-1]-M111)<0.000001)
+		{
 			fTotalFee -= (fMealMap[i - 1] - (float)0.1);
+		}
 		else
 			fTotalFee -= fMealMap[i - 1];
 	}
